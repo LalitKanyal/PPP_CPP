@@ -1503,8 +1503,113 @@ int main() {
 */
 
 
+//===================================16 August ===============================
+
+// Exercise
+/*
+Write a program that reads a string from input and then, for each character read, prints out the character and its integer value on a line.
+*/
+
+/*
+
+#include <iostream>
+#include <string>
+
+int main()
+{
+	std::cout << "Enter a string: \n";
+	std::string text;
+
+	//std::cin >> text;			// std::cin only reads until the first space so use getline
+
+	std::getline (std::cin, text);
+
+	std::cout << "You entered: " << text << '\n';
+
+	for (int i = 0; i < text.size(); ++i)
+	{	
+		std::cout << "character" << '\t' << "Integer value" << '\n';
+		std::cout << text[i] << '\t' << '\t';
+		// std::cout << int(text[i]) << '\n';								// c-style cast
+		std::cout << static_cast<int>(text[i]) << '\n';					// cpp cast
+	}
+}
+*/
 
 
+/*
+Problem
+Read a sequence of double values into a vector. Think of each value as the distance between
+two cities along a given route. Compute and print the total distance (the sum of all distances).
+Find and print the smallest and greatest distance between two neighboring cities.
+Find and print the mean distance between two neighboring cities.
+*/
+
+/*
+Solution
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+	// we can declare the vector with values but we will take input and store it into vector
+	// std::vector<double>distances = {20.33, 44.35, 29.37, 89.33, 45.4};					// here each value represents distance between two cities along a given route
+	
+	std::cout << "Enter a sequence of double values like 20.3 40.33 22.3: (use ctrl D to stop): \n";
+	
+	std::vector<double>distances;
+	double input;
+
+	// keep reading the input until it stops (ctrl D)
+	// question how to take input and store it in vector? 
+	// ans - use pushback()
+
+	while (std::cin >> input) {
+		distances.push_back(input);
+	}
+
+	double total_distance = 0;
+
+	for (int i = 0; i < distances.size(); ++i)
+	{	
+		total_distance += distances[i];
+	}
+	std::cout << "Total distance is " << total_distance << '\n';
+
+
+	// Find and print the smallest and greatest distance between two neighboring cities.
+
+	auto [min_it, max_it] = std::ranges::minmax_element(distances);
+	std::cout << "Smallest distance = " << *min_it << '\n';
+	std::cout << "Greatest distance = " << *max_it << '\n';
+
+	// find minimum and maximum values in the whole vector
+	std::vector<double> sorted_values = distances;
+
+	if (!distances.empty()) {				// !distances.empty() means "vector is NOT empty"
+		std::ranges::sort(sorted_values);
+		std::cout << "Smallest distance for whole vector= " << sorted_values[0] << '\n';
+		std::cout << "Greatest distance for whole vector= " << sorted_values[sorted_values.size()-1] << '\n';
+	}
+
+	else
+	{
+		std::cout << "Distances values is empty";
+	}
+
+	// Find and print the mean distance between two neighboring cities.
+
+
+	if (!distances.empty()) {
+		double mean = total_distance / distances.size();
+		std::cout << "Mean:" << mean << '\n';
+	}
+}
+*/
 
 
 
