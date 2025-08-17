@@ -1715,11 +1715,11 @@ int main()
 	std::vector<std::string> values = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 	
 	// Digit -> Word
-	std::cout << "\nEnter a number (0-9):\n";
+	std::cout << "\nEnter a number (0-9): ";
 	int num;
 	std::cin >> num;
 
-	if (num >=0 && num < (int)values.size())
+	if (num >=0 && num < std::ssize(values))
 	{
 		std::cout << "Spelled out: " << values[num] << '\n';
 	}
@@ -1734,12 +1734,18 @@ int main()
 	std::string str;
 	std::cin >> str;
 
-	for (int i = 0; i < values.size(); i++)
+	bool found = false;
+	for (int i = 0; i < std::ssize(values); ++i)
 		{
 		if (str == values[i]) {
-			std::cout << i;
+			std::cout << "Digit: " << i << '\n';
+			found = true;
+			break;
 		}
 		}
+	if (!found) {
+		std::cout << "Not a valid spelled-out digit!\n";
+	}
 }
 
 // boilerplate
