@@ -1612,16 +1612,90 @@ int main()
 */
 
 
+/*
+Problem:
+
+Write a program to play a numbers guessing game. The user thinks of a number between 1
+and 100 and your program asks questions to figure out what the number is (e.g., ‘‘Is the number
+you are thinking of less than 50?’’). Your program should be able to identify the number
+after asking no more than seven questions.
+*/
 
 
+/*
+#include <iostream>
+#include <string>
 
+int main()
+{
+	int low = 1; int high = 100;
 
+	std::cout << "Choose a number between 1 to 100: \n";
 
+	for (int i = 0; i < 7; ++i) {
+		int mid = (low + high) / 2;
+		char response = 0;
 
+		std::cout << "Is your number less or equal to: " << mid << "? (y/n): ";
+		std::cin >> response;
+		if (response == 'y') {
+			high = mid;
+		}
+		else {
+			low = mid + 1;
+		}
 
+		if (low == high) {
+			std::cout << "Your number is " << low << "!\n";
+			break;
+		}
+	}
 
+}
+*/
 
+// ================================================17 August 2025 ==============================
 
+/* Problem 
+Write a program that performs as a very simple calculator. Your calculator should be able to
+handle the four basic math operations – add, subtract, multiply, and divide – on two input values.
+Your program should prompt the user to enter three arguments: two double values and a
+character to represent an operation. If the entry arguments are 35.6, 24.1, and '+', the program
+output should be The sum of 35.6 and 24.1 is 59.7. In Chapter 5 and Chapter 6, we look at a
+much more sophisticated simple calculator.
+*/
+
+/*
+#include <iostream>
+#include <string>
+
+int main()
+{
+	double input1 = 0.0, input2 = 0.0;
+	char operat = 0;
+	std::cout << "Enter three arguments: two double values and a character for operation like 35.6, 24.1 and '+' (Note: This program works for +, -, *, /: \n";
+	
+	std::cin >> input1 >> input2 >> operat;
+
+	switch (operat) {
+		case '+':
+			std::cout << "The sum of " << input1 << " and " << input2 << " is " << input1 + input2 << '\n';
+			break;
+		case '-':
+			std::cout << "The difference between " << input1 << " and " << input2 << " is " << input1 - input2 << '\n';
+			break;
+		case '*':
+			std::cout << "The multiplication of " << input1 << " and " << input2 << " is " << input1 * input2 << '\n';
+			break;
+		case '/':
+			std::cout << "The division of " << input1 << " and " << input2 << " is " << input1 / input2 << '\n';
+			break;
+		default:
+			std::cout << "Operation " << operat << " out of scope of this program" << '\n';
+	}
+	
+}
+*/
 
 
 // boilerplate
