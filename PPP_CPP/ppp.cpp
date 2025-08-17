@@ -1697,6 +1697,50 @@ int main()
 }
 */
 
+/* Problem 7
+Make a vector holding the ten string values "zero", "one", . . . "nine". Use that in a program
+that converts a digit to its corresponding spelled-out value; e.g., the input 7 gives the output
+seven. Have the same program, using the same input loop, convert spelled-out numbers into
+their digit form; e.g., the input seven gives the output 7.
+*/
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main()
+{	
+
+	std::cout << "=======Digit to its corresponding spelled-out value converter=======\n";
+	std::vector<std::string> values = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+	
+	// Digit -> Word
+	std::cout << "\nEnter a number (0-9):\n";
+	int num;
+	std::cin >> num;
+
+	if (num >=0 && num < (int)values.size())
+	{
+		std::cout << "Spelled out: " << values[num] << '\n';
+	}
+	else {
+		std::cout << num << " is out of range!\n";
+	}
+
+	// Word -> Digit
+	std::cout << "\n=======spelled-out value to corresponding digit converter=======\n";
+
+	std::cout << "\nEnter a spelled-out digit (like: five): ";
+	std::string str;
+	std::cin >> str;
+
+	for (int i = 0; i < values.size(); i++)
+		{
+		if (str == values[i]) {
+			std::cout << i;
+		}
+		}
+}
 
 // boilerplate
 /*
