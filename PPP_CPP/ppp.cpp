@@ -1913,20 +1913,50 @@ int main()
 #include <iostream>
 #include <string>
 
+// custom error() function
+#include <stdexcept>
+
+void error(const std::string& s) {
+	throw std::runtime_error(s);
+}
+
+
 int main()
 {
-	std::cout << "Please enter expression (we can handle + and -): ";
+	std::cout << "Please enter expression (we can handle +, -, *, and /)\n";
+	std::cout << "add an x to end expression (e.g., 1+2*3x: ";
 
 	int lval = 0;
 	int rval = 0;
-	char op = 0;
-	int res = 0;
+	
+	// read left-most operand
+	std::cin >> lval;
 
-	std::cin >> lval >> op >> rval;				// read something like 1 + 3;
+	if (!std::cin)
+		error("no first operand");
 
-	if (op == '+')
-		res = lval + rval;
-	else if (op == '-')
-		res = lval - rval;
-	std::cout << "Result: " << res << '\n';
+	for (char op; std::cin >> op;) {
+		if (op != 'x')
+			std::cin >> rval;
+		if (!std::cin)
+			error("no second operand");
+		switch (op) {
+		case '+':
+			lval += rval;
+			break;
+		case '-':
+			lval -= rval;
+			break;
+		case '*':
+			lval *= rval;
+			break;
+		case '/':
+			lval /= rval;
+			break;
+		default:
+			std::cout << "Result: " << lval << '\n';
+			return 0;
+		}
+	}
+	error("bad expression");
 }	
