@@ -1850,6 +1850,8 @@ see what’s going on.
 3 square = 6
 4 square = 8
 */
+
+/*
 #include <iostream>
 
 int main() {
@@ -1879,6 +1881,8 @@ int main() {
             std::cout << "Reached at least 1,000,000,000 grains on square " << square << "\n";
     }
 }
+*/
+
 
 
 
@@ -1893,3 +1897,36 @@ int main()
 	std::cout << "Enter two ints:\n";
 }
 */
+
+
+//======================CHAPTER 4 - ERRORS ================
+
+/*
+1. compile time errors: errors found by compiler are compile-time errors syntax and type error
+2. Link-Time errors: error found by linker when typing to combine object files into an exe program
+3. Run Time error/logic error: error found by check in running program like error detected by computer, standard library, user code
+*/
+
+
+// ===== CHAPTER 5 WRITING A PROGRAM =============
+
+#include <iostream>
+#include <string>
+
+int main()
+{
+	std::cout << "Please enter expression (we can handle + and -): ";
+
+	int lval = 0;
+	int rval = 0;
+	char op = 0;
+	int res = 0;
+
+	std::cin >> lval >> op >> rval;				// read something like 1 + 3;
+
+	if (op == '+')
+		res = lval + rval;
+	else if (op == '-')
+		res = lval - rval;
+	std::cout << "Result: " << res << '\n';
+}	
