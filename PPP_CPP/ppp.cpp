@@ -1704,6 +1704,7 @@ seven. Have the same program, using the same input loop, convert spelled-out num
 their digit form; e.g., the input seven gives the output 7.
 */
 
+/*
 #include <iostream>
 #include <string>
 #include <vector>
@@ -1747,6 +1748,140 @@ int main()
 		std::cout << "Not a valid spelled-out digit!\n";
 	}
 }
+*/
+
+// ========================= 18 August 2025 ===================================
+/*
+Problem
+Modify the ‘‘mini calculator’’ from exercise 6 to accept (just) single-digit numbers written as
+either digits or spelled out.
+*/
+
+/* Problem
+Write a program that performs as a very simple calculator. Your calculator should be able to
+handle the four basic math operations – add, subtract, multiply, and divide – on two input values.
+Your program should prompt the user to enter three arguments: two double values and a
+character to represent an operation. If the entry arguments are 35.6, 24.1, and '+', the program
+output should be The sum of 35.6 and 24.1 is 59.7. In Chapter 5 and Chapter 6, we look at a
+much more sophisticated simple calculator.
+/*
+#include <iostream>
+#include <string>
+#include <vector>
+
+// Convert string input ("7" or "seven") to integer
+int convert_to_int(const std::string& str) {
+	std::vector<std::string> values = {
+		"zero", "one", "two", "three", "four",
+		"five", "six", "seven", "eight", "nine"
+	};
+
+	// case 1: single character digit
+	if (str.size() == 1 && str[0] >= '0' && str[0] <= '9') {
+		return str[0] - '0';									// '9' - '8' = 1;
+	}
+
+	// case 2: spelled out word
+	for (int i = 0; i < std::ssize(values); ++i) {
+		if (str == values[i]) {
+			return i;
+		}
+	}
+
+	// if not valid
+	std::cout << "Invalid number input: " << str << "\n";
+	std::exit(1);
+}
+
+int main() {
+	std::string input1, input2;
+	char operat;
+
+	std::cout << "Enter two numbers (digit or word) and an operator (+, -, *, /):\n";
+	std::cin >> input1 >> input2 >> operat;
+
+	int num1 = convert_to_int(input1);
+	int num2 = convert_to_int(input2);
+
+	switch (operat) {
+	case '+':
+		std::cout << "The sum of " << num1 << " and " << num2
+			<< " is " << num1 + num2 << "\n";
+		break;
+	case '-':
+		std::cout << "The difference between " << num1 << " and " << num2
+			<< " is " << num1 - num2 << "\n";
+		break;
+	case '*':
+		std::cout << "The product of " << num1 << " and " << num2
+			<< " is " << num1 * num2 << "\n";
+		break;
+	case '/':
+		if (num2 == 0) {
+			std::cout << "Error: Division by zero\n";
+		}
+		else {
+			std::cout << "The division of " << num1 << " and " << num2
+				<< " is " << num1 / num2 << "\n";
+		}
+		break;
+	default:
+		std::cout << "Invalid operator: " << operat << "\n";
+	}
+}
+*/
+
+/*
+Problem:
+There is an old story that the emperor wanted to thank the inventor of the game of chess and
+asked the inventor to name his reward. The inventor asked for one grain of rice for the first
+square, 2 for the second, 4 for the third, and so on, doubling for each of the 64 squares. That
+may sound modest, but there wasn’t that much rice in the empire! Write a program to calculate
+how many squares are required to give the inventor at least 1000 grains of rice, at least
+1,000,000 grains, and at least 1,000,000,000 grains. You’ll need a loop, of course, and probably
+an int to keep track of which square you are at, an int to keep the number of grains on
+the current square, and an int to keep track of the grains on all previous squares. We suggest
+that you write out the value of all your variables for each iteration of the loop so that you can
+see what’s going on.
+*/
+
+/* 1 square = 1
+2 square = 2
+3 square = 6
+4 square = 8
+*/
+#include <iostream>
+
+int main() {
+    int square = 1;              // start at square 1
+    long long grains_on_square = 1;  // 1 grain on first square
+    long long total_grains = 1;      // total grains so far
+
+    std::cout << "Square " << square 
+              << ": grains on this square = " << grains_on_square 
+              << ", total = " << total_grains << "\n";
+
+    // loop through the rest of the 64 squares
+    for (square = 2; square <= 64; ++square) {
+        grains_on_square *= 2;          // double the grains
+        total_grains += grains_on_square; // add to total
+
+        std::cout << "Square " << square 
+                  << ": grains on this square = " << grains_on_square 
+                  << ", total = " << total_grains << "\n";
+
+        // check milestones
+        if (total_grains >= 1000 && total_grains - grains_on_square < 1000)
+            std::cout << "Reached at least 1000 grains on square " << square << "\n";
+        if (total_grains >= 1000000 && total_grains - grains_on_square < 1000000)
+            std::cout << "Reached at least 1,000,000 grains on square " << square << "\n";
+        if (total_grains >= 1000000000 && total_grains - grains_on_square < 1000000000)
+            std::cout << "Reached at least 1,000,000,000 grains on square " << square << "\n";
+    }
+}
+
+
+
 
 // boilerplate
 /*
