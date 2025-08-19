@@ -1910,6 +1910,7 @@ int main()
 
 // ===== CHAPTER 5 WRITING A PROGRAM =============
 
+/*
 #include <iostream>
 #include <string>
 
@@ -1960,3 +1961,57 @@ int main()
 	}
 	error("bad expression");
 }	
+
+*/
+
+
+
+//================== functions =====================
+/*
+* A declaration is a statement that introduces a name into a scope 
+For example:
+int a = 7; // an int var iable
+const double cd = 8.7; // a double-precision floating-point constant
+double sqrt(double); // a function taking a double argument and returning a double result
+
+
+
+
+
+A declaration that (also) fully specifies the entity declared is called a definition. For example:
+int a = 7;
+vector<double> v;
+// double sqrt(double d) {// code}
+*/
+
+/*
+definition vs declaration
+
+// definition
+
+double sqrt(double d)
+{
+// ... calculate the square root of d ...
+}
+*/
+
+
+/*
+Every definition is (by definition) also a declaration, but only some declarations are also definitions.
+Here are some examples of declarations that are not definitions; if the entity it refers to is used,
+each must be matched by a definition elsewhere in the code:
+double sqrt(double); // no function body here
+*/
+
+/*
+types of declaration
+
+Variables and constants (§7.2.2)
+• Functions (§7.4)
+• Namespaces (§7.6)
+• Modules (§7.7)
+• Types (classes and enumerations; Chapter 8)
+• Templates (Chapter 18)
+• Concepts (§18.1.3)
+
+*/
