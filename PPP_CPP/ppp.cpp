@@ -1887,18 +1887,6 @@ int main() {
 
 
 
-// boilerplate
-/*
-#include <iostream>
-#include <string>
-
-int main()
-{
-	std::cout << "Enter two ints:\n";
-}
-*/
-
-
 //======================CHAPTER 4 - ERRORS ================
 
 /*
@@ -2014,4 +2002,39 @@ Variables and constants (§7.2.2)
 • Templates (Chapter 18)
 • Concepts (§18.1.3)
 
+*/
+
+//============ 21 august 2025
+/* The buffer is a data structure that the ostream uses internally to store the data you give it while
+communicating with the operating system*/
+
+// istreams provide features for reading the kind of output produced by ostreams.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// boilerplate
+/*
+#include <iostream>
+#include <string>
+
+int main()
+{
+	std::cout << "Enter two ints:\n";
+}
 */
