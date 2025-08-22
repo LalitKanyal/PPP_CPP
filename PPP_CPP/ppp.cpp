@@ -2012,12 +2012,88 @@ communicating with the operating system*/
 
 
 
+// =================Vector======================
+/*
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main()
+{
+	std::vector<double> age(4);		// a vector with 4 elements of type double
+	age[0] = 0.33;
+	age[1] = 22.0;
+	age[2] = 27.2;
+	age[3] = 54.2;
+}
+*/
+
+/*
+// creating own Vector
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main()
+{
+	class Vector {
+		int size;
+		double age0, age1, age2, age3;
+
+		// here we don't have any way of adding an element
+		// number of elements are fixed
+		// changing elements of vector operations like push_back() wouldn't work
+	};
+}
+*/
+
+// Pointer - 
+/*
+In C++, a data type that can hold an address is called a pointer and is syntactically distinguished by the suffix *, so that double* means pointer to double.
+*/
+
+/*
+#include <iostream>
+#include <string>
+#include <vector>
+
+int main()
+{
+	class Vector {	// simplified vector of doubles like vector<double>
+		int sz;			// size
+		double* element;	// pointer to the first element (of type double)
+
+	public:
+		Vector(int s);		// constructor: allocate s doubles,
+							// let elem point to them and sz hold the size (s)
+
+		int size() const { return sz;}		// the current size
+
+		// here we don't have any way of adding an element
+		// number of elements are fixed
+		// changing elements of vector operations like push_back() wouldn't work
+	};
+}
+*/
+
+// sizeof
+
+/*
+#include <iostream>
+#include <string>
+
+void sizes(char ch, int i, int* p)
+{
+	std::cout << sizeof(char) << " and " << sizeof(ch);
+	std::cout << sizeof(int) << " and " << sizeof(i);
+	std::cout << sizeof(int*) << " and " << sizeof(p);
+}
 
 
-
-
-
-
+int main() {
+	sizes('a', 3, NULL);
+}
+*/
 
 
 
